@@ -2,10 +2,8 @@
 base_url = "https://docs.simpleiot.org"
 description = "Simple IoT Documentation"
 
-# Whether to automatically compile all Sass files in the sass directory
+theme = "book"
 compile_sass = true
-
-# Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
 [markdown]
