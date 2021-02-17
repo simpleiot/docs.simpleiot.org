@@ -28,8 +28,6 @@ siot_update_docs() {
     cp "$src"/*.png "$dest/"
     cp "$src"/*.jpg "$dest/"
 
-    md_files=$(siot_find_md_files)
-    echo "updating links in files $md_files"
     for f in "$dest"/*.md; do
       echo "processing $f"
       siot_update_image_links "$f"
