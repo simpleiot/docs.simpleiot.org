@@ -1,12 +1,11 @@
 #!/bin/sh
 
-# need to make a function that replaces the following links
-# in markdown files:
-# ![gw](gw.jpg)
-# with
-# ![gw](/img/projects/gw.jpg)
-# but not include links like:
-# ![conn](https://www.wiredwatts.com/img/products/m/pt3c6km3-1_m.jpg)
+# This script copies docs files from various projects to the
+# Zola content/ directory and fixes up a few things:
+#
+# - redo image links
+# - map README.md -> _index.md
+# - remove "*.md" from markdown links
 
 siot_projects="hardware"
 
