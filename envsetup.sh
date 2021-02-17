@@ -10,23 +10,6 @@
 
 siot_projects="hardware"
 
-siot_find_md_files() {
-  for p in $siot_projects; do
-    for f in "docs/$p/"*.md; do
-      ret="${ret} ${f}"
-    done
-  done
-  echo "$ret"
-}
-
-siot_update_image_links() {
-  file=$1
-  project=$(echo "$1" | sed 's/docs\/\(.*\)\/.*/\1/')
-  echo "project: $project"
-  # FIXME this is still replacing all links, even external
-  sed -i "s/\(!\[.*\]\)(\(.*\))/\1(\/img\/projects\/${project}\/\2)/g" "$file"
-}
-
 siot_update_docs() {
   echo "updating docs"
   for project in $siot_projects; do
@@ -37,12 +20,14 @@ siot_update_docs() {
     cp "$src"/*.md "$dest/"
     cp "$src"/*.png "$dest/"
     cp "$src"/*.jpg "$dest/"
-  done
 
-  #md_files=$(siot_find_md_files)
-  #echo "updating links in files $md_files"
-  #for f in $md_files; do
-  #  echo "processing $f"
-  #  siot_update_image_links "$f"
-  #done
+    md_files=$(siot_find_md_files)
+    echo "updating links in files $md_files"
+    for f in "$dest"/*.md; do
+      echo "processing $f"
+      siot_update_image_links "$f"
+      sed -i "s/(\([A-Za-z0-9_-]*\.png\))/(\/${project}\/\1)/g" "$f"
+      sed -i "s/(\([A-Za-z0-9_-]*\.jpg\))/(\/${project}\/\1)/g" "$f"
+    done
+  done
 }
