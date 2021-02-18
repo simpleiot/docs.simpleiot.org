@@ -7,14 +7,14 @@
 # - map README.md -> _index.md
 # - remove "*.md" from markdown links
 
-siot_projects="hardware"
+siot_projects="hardware go"
 
 siot_update_docs() {
   echo "updating docs"
   for project in $siot_projects; do
     src=sources/$project/docs
     dest=content/$project
-    rm -rf $dest
+    rm -rf "$dest"
     mkdir "$dest"
     for f in "$src"/*.md; do
       file_name=$(basename "$f")
