@@ -15,7 +15,7 @@ siot_update_docs() {
     src=sources/$project/docs
     dest=content/$project
     rm -rf "$dest"
-    mkdir "$dest"
+    mkdir -p "$dest"
     for f in "$src"/*.md; do
       file_name=$(basename "$f")
       echo "file_name: $file_name"
@@ -30,7 +30,6 @@ siot_update_docs() {
 
     for f in "$dest"/*.md; do
       echo "processing $f"
-      siot_update_image_links "$f"
 
       # prefix images with parent path
       sed -i "s/(\([A-Za-z0-9_-]*\.png\))/(\/${project}\/\1)/g" "$f"
