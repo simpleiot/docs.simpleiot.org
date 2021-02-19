@@ -7,7 +7,7 @@
 # - map README.md -> _index.md
 # - remove "*.md" from markdown links
 
-siot_projects="hardware go"
+siot_projects="hardware go firmware"
 
 siot_update_docs() {
   echo "updating docs"
