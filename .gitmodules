@@ -7,3 +7,6 @@
 [submodule "sources/go"]
 	path = sources/go
 	url = https://github.com/simpleiot/simpleiot.git
+[submodule "sources/firmware"]
+	path = sources/firmware
+	url = https://github.com/simpleiot/firmware.git
